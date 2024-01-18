@@ -480,6 +480,7 @@
 			<Catalog>Товары</Catalog>
 			<Catalog>ХранилищеВариантовОтчетов</Catalog>
 			<Catalog>ХранимыеФайлы</Catalog>
+			<Catalog>СправочникДляПримера</Catalog>
 			<Document>Заказ</Document>
 			<Document>ОперацияПоУчетуТоваров</Document>
 			<Document>Оплата</Document>
