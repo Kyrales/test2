@@ -1,6 +1,6 @@
 #!/bin/bash
 prefix="Task-"
-git pull
+                    git pull
                     git checkout -B "master" "origin/master"
                     git pull
                     git checkout -B "branch_sync_hran" "origin/branch_sync_hran"
