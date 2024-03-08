@@ -1,5 +1,5 @@
 #!/bin/bash
-                    prefix="Task-"
+prefix="Task-"
                     git pull
                     git checkout -B "master" "origin/master"
                     git pull
