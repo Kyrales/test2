@@ -1,4 +1,4 @@
-## Инициализация
+## Инициализация 333
 
 gitsync init -u "Администратор" "F:\otus\StorageTest2" "F:\otus\test2\src\cf"
 
