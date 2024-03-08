@@ -9,12 +9,9 @@
                     IFS='|' read -ra my_array <<< "$logof"
                     for i in "${my_array[@]}"
                         do
-                            BranchName=($(echo $i | sed 's/.*;//' | grep -oP --regexp="$prefix\K\d+"))
-                            BranchName=$prefix$BranchName
+                            BranchName=($(echo $i | sed 's/.*;//'))
                             echo "Это имя ветки: $BranchName"
                             commit=($(echo $i | sed 's/;.*//'))
                             echo "Это ИД коммита: $commit"
-                            committext=$(git show -s --format=%s $commit)
-                            echo "Это текст коммита: $committext"
                         done
 git checkout -B "master" "origin/master"
