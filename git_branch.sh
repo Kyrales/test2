@@ -7,7 +7,6 @@ git pull
                     logof=$(git log --reverse master...branch_sync_hran --pretty=format:"%h;%s|" | tr -d '\r\n')
                     echo "Вывод лога: $logof"
                     IFS='|' read -ra my_array <<< "$logof"
-                    echo "Вывод IFS: $IFS"
                     for i in "${my_array[@]}"
                         do
                             BranchName=($(echo $i | sed 's/.*;//' | grep -oP --regexp="$prefix\K\d+"))
@@ -19,8 +18,8 @@ git pull
                             git cherry-pick ${commit} --keep-redundant-commits --strategy-option recursive -X theirs
                             git diff --name-only --diff-filter=U | xargs git rm -f
                             git add .
-                            git commit -m "feature/${BranchName} - ${committext}"
-                            git push --set-upstream origin "feature/$i_branch"
+                            git commit -m "${committext}"
+                            git push --set-upstream origin "feature/${BranchName}"
                             git rm 'src/cf/VERSION'
                             git rm 'src/cf/dumplist.txt'
                             git push origin "feature/${BranchName}"
