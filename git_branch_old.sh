@@ -1,5 +1,5 @@
 #!/bin/bash
-                    prefix="Task-"
+                    prefix="Task"
                     git pull
                     git checkout -B "master" "origin/master"
                     git pull
@@ -10,16 +10,14 @@
                     echo "Вывод IFS: $IFS"
                     for i in "${my_array[@]}"
                         do
-                            BranchName=($(echo $i | sed 's/.*;//' | grep -oP --regexp="$prefix\K\d+"))
-                            BranchName=$prefix$BranchName                           
+                            BranchName=($(echo $i | sed 's/.*;//'))
                             commit=($(echo $i | sed 's/;.*//'))
-                            committext=$(git show -s --format=%s $commit)
                             git checkout -B "master" "origin/master"
                             git checkout -B "feature/${BranchName}" "origin/feature/${BranchName}" || git checkout -B "feature/${BranchName}"
                             git cherry-pick ${commit} --keep-redundant-commits --strategy-option recursive -X theirs
                             git diff --name-only --diff-filter=U | xargs git rm -f
                             git add .
-                            git commit -m "feature/${BranchName} - ${committext}"
+                            git commit -m "feature/${BranchName} - ${commit}"
                             git push --set-upstream origin "feature/$i_branch"
                             git rm 'src/cf/VERSION'
                             git rm 'src/cf/dumplist.txt'
